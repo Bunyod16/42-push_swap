@@ -1,0 +1,4 @@
+*test*
+*.out
+checker_linux
+*.o
