@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 t_lst	*ps_lstnew(int content)
 {
@@ -12,15 +13,24 @@ t_lst	*ps_lstnew(int content)
 	return (ret);
 }
 
-void	ps_lstadd_back(t_lst *lst, t_lst *new)
+void	ps_lstadd_back(t_lst **lst, t_lst *copy, int value)
 {
-	t_lst *newl;
+	t_lst	*node;
 
-	newl = malloc(sizeof(t_lst));
-	newl->content = new->content;
-	newl->next = NULL;
-	while (lst->next != NULL)
-		lst = lst->next;
-	lst->next = newl;
-	return ;
+	if (!*lst)
+	{
+		node = malloc(sizeof(t_lst));
+		node->content = value;
+		node->next = NULL;
+		*lst = node;
+	}
+	else
+	{
+		while (copy->next)
+			copy = copy->next;
+		node = malloc(sizeof(t_lst));
+		copy->next = node;
+		node->content = value;
+		node->next = NULL;
+	}
 }

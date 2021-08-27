@@ -4,7 +4,7 @@ SOURCES=$(wildcard ./*.c)
 
 NAME:
 	cd libft; make re; cp libft.a ../; make clean
-	$(GCC) $(SOURCES) push_swap.h libft.a
+	$(GCC) $(SOURCES) push_swap.h libft.a -o push_swap
 
 all: $(NAME)
 
