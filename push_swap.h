@@ -10,5 +10,5 @@ typedef struct b_list
 }				t_lst;
 int	ft_isnum(char *s);
 t_lst	*ps_lstnew(int content);
-void	ps_lstadd_back(t_lst **lst, int value);
+void	ps_lstadd_back(t_lst **lst, t_lst *copy, int value);
 # endif

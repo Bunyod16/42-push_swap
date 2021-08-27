@@ -1,6 +1,49 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+void swap_nodes(t_lst **head,t_lst *temp_head, t_lst *min, t_lst *old_min)
+{
+	t_lst *temp;
+	
+	*head = min;
+	old_min->next = temp_head;
+	temp = min->next;
+	min->next = temp_head->next;
+	temp_head->next = temp;
+}
+
+t_lst *recursive_selection_sort(t_lst *head)
+{
+	t_lst	*min;
+	t_lst	*old_min;
+	t_lst	*temp;
+
+	if (head->next == NULL)
+		return head;
+	min = head;
+	temp = head;
+	while(temp->next != NULL)
+	{
+		if (temp->next->content < min->content)
+		{
+			min = temp->next;
+			old_min = temp;
+		}
+		temp = temp->next;
+	}
+	if (min != head)
+		swap_nodes(&head, head, min, old_min);
+	head->next = recursive_selection_sort(head->next);
+	return head;
+}
+
+void rssort(t_lst **head)
+{
+	if (head == NULL)
+		return ;
+	*head = recursive_selection_sort(*head);
+}
+
 void	print_stack(t_lst *stack)
 {
 	while (stack)
@@ -9,31 +52,6 @@ void	print_stack(t_lst *stack)
 		stack = stack->next;
 	}
 }
-
-// void	push_stack(t_lst *from, t_lst *to)
-// {
-// 	int		new_value;
-// 	int		temp;
-
-// 	new_value = from->content;
-// 	while (from)
-// 	{
-// 		from->content = from->next->content;
-// 		if (from->next->next == NULL)
-// 		{
-// 			free(from->next);
-// 			from->next = NULL;
-// 			break;
-// 		}
-// 		from = from->next;
-// 	}
-// 	while (to->next)
-// 	{
-// 		to->content = to->next->content;
-// 		to = to->next;
-// 	}
-// 	to->next = ps_lstnew(temp);
-// } 
 
 int	main(int argc, char **argv)
 {
@@ -51,6 +69,6 @@ int	main(int argc, char **argv)
 		}
 		ps_lstadd_back(&stack_a, stack_a, ft_atoi(argv[i]));
 	}
-	// sort(stack_a)
+	rssort(&stack_a);
 	print_stack(stack_a);
 }
