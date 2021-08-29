@@ -1,6 +1,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+/// old below 
 void swap_nodes(t_lst **head,t_lst *temp_head, t_lst *min, t_lst *old_min)
 {
 	t_lst *temp;
@@ -52,14 +53,57 @@ void	print_stack(t_lst *stack)
 		stack = stack->next;
 	}
 }
+/// old ^^^
+
+void	maxsort(t_lst **headRef)
+{
+	t_lst	*head;
+	t_lst	*min_ref;
+	t_lst	*stack_b;
+	int		num;
+
+	stack_b = NULL;
+	head = *headRef;
+	num = INT_MAX;
+	if (head == NULL)
+		return ;
+	while (head)
+	{
+		if (head->content <= num)
+		{
+			num = head->content;
+			min_ref = head;
+		}
+		head = head->next;
+	}
+	head = *headRef;
+	while (head != min_ref)
+	{
+		rotate_stack(headRef);
+		head = *headRef;
+	}
+	push_stack(headRef, &stack_b);
+	while ((*headRef))
+	{
+		push_stack(headRef, &stack_b);
+		if (stack_b->content < stack_b->next->content)
+			swap_stack(&stack_b);
+	}
+	print_stack(stack_b);
+}
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	t_lst *stack_a;
+	int		i;
+	t_lst	*stack_a;
+	t_lst	*temp;
+	t_lst	*stack_b;
 
 	i = 0;
 	stack_a = NULL;
+	stack_b = malloc(sizeof(t_lst *));
+	stack_b->content = 5;
+	stack_b->next = NULL;
 	while (argv[++i] && argc > 1)
 	{
 		if(!ft_isnum(argv[i]) || ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
@@ -69,6 +113,12 @@ int	main(int argc, char **argv)
 		}
 		ps_lstadd_back(&stack_a, stack_a, ft_atoi(argv[i]));
 	}
-	rssort(&stack_a);
-	print_stack(stack_a);
+	// rssort(&stack_a);
+	maxsort(&stack_a);
+	while(stack_a)
+	{
+		temp = stack_a->next;
+		free(stack_a);
+		stack_a = temp;
+	}
 }
