@@ -28,7 +28,7 @@ void	rotate_stack(t_lst	**headRef)
 	t_lst	*head;
 	t_lst	*second_node;
 
-	if ((*headRef)->next == NULL || !*headRef)
+	if (!*headRef || (*headRef)->next == NULL)
 		return;
 	head = *headRef;
 	temp = *headRef;
@@ -46,7 +46,7 @@ void	rrotate_stack(t_lst	**headRef)
 	t_lst	*head;
 	t_lst	*second_node;
 
-	if ((*headRef)->next == NULL || !*headRef)
+	if (!*headRef || (*headRef)->next == NULL)
 		return;
 	head = *headRef;
 	temp = *headRef;
