@@ -1,19 +1,21 @@
 NAME=pushswap
 GCC=gcc -Wall -Werror -Wextra
 SOURCES=$(wildcard ./*.c)
+S_OBJ=$(SOURCES:.c=.o)
 UTILS=$(wildcard ./utils/*.c)
-
-NAME:
-	cd libft; make re; cp libft.a ../; make clean
-	$(GCC) $(SOURCES) $(UTILS) push_swap.h libft.a -o push_swap
+U_OBJ=$(patsubst ./utils/%.c,%.o,$(wildcard ./utils/*.c))
 
 all: $(NAME)
 
+$(NAME):
+	cd libft; make re; cp libft.a ../; make clean
+	$(GCC) -c $(SOURCES) $(UTILS)
+	$(GCC) -o push_swap $(S_OBJ) $(U_OBJ) push_swap.h libft.a
+
 clean:
-	rm -rf $(COMPOBJECTS) $(BONUSOBJECTS)
+	rm -rf $(S_OBJ) $(U_OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
-

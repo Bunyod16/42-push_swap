@@ -1,10 +1,11 @@
 #include "../push_swap.h"
 
-void	push_stack(t_lst **src, t_lst **dest)
+void	push_stack(t_lst **src, t_lst **dest, char *str)
 {
 	t_lst	*temp;
 	t_lst	*temp2;
 
+	ft_putstr_fd(str, 1);
 	if (!*dest)
 	{
 		temp = (*src)->next;
@@ -22,12 +23,13 @@ void	push_stack(t_lst **src, t_lst **dest)
 	}
 }
 
-void	rotate_stack(t_lst	**headRef)
+void	rotate_stack(t_lst	**headRef,  char *str)
 {
 	t_lst	*temp;
 	t_lst	*head;
 	t_lst	*second_node;
 
+	ft_putstr_fd(str, 1);
 	if (!*headRef || (*headRef)->next == NULL)
 		return;
 	head = *headRef;
@@ -40,12 +42,13 @@ void	rotate_stack(t_lst	**headRef)
 	*headRef = second_node;
 }
 
-void	rrotate_stack(t_lst	**headRef)
+void	rrotate_stack(t_lst	**headRef,  char *str)
 {
 	t_lst	*temp;
 	t_lst	*head;
 	t_lst	*second_node;
 
+	ft_putstr_fd(str, 1);
 	if (!*headRef || (*headRef)->next == NULL)
 		return;
 	head = *headRef;
@@ -61,11 +64,12 @@ void	rrotate_stack(t_lst	**headRef)
 	second_node->next = NULL;
 }
 
-void	swap_stack(t_lst **headRef)
+void	swap_stack(t_lst **headRef,  char *str)
 {
 	t_lst	*temp;
 	t_lst	*head;
 
+	ft_putstr_fd(str, 1);
 	if (!(*headRef) || !(*headRef)->next)
 		return;
 	head = *headRef;
