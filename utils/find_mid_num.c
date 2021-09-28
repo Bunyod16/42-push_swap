@@ -74,7 +74,7 @@ int	find_mid_num(t_lst **headRef)
 	ref = new;
 	len = lst_len(new);
 	i = 0;
-	while (i++ < len/2)
+	while (i++ < len/2 && i != 4)
 		new = new->next;
 	i = new->content;
 	while(ref)

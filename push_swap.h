@@ -15,7 +15,6 @@ void	rotate_stack(t_lst	**headRef, char *str);
 void	rrotate_stack(t_lst	**headRef, char *str);
 void	swap_stack(t_lst **headRef, char *str);
 void	ps_lstadd_back(t_lst **lst, int value);
-int		find_min(t_lst *head, int split_num);
 int		find_mid_num(t_lst **headRef);
 int		lst_len(t_lst *head);
 int		ft_isnum(char *s);

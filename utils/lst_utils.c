@@ -9,7 +9,7 @@ t_lst	*ps_lstnew(int content)
 	if (!ret)
 		return (NULL);
 	ret->content = content;
-	ret->split = 0;
+	ret->split = -1;
 	ret->next = NULL;
 	return (ret);
 }
@@ -30,9 +30,7 @@ int	lst_len(t_lst *head)
 void	ps_lstadd_back(t_lst **lst, int value)
 {
 	t_lst	*node;
-	// t_lst	*copy;
 
-	// copy = *lst;
 	if (!*lst)
 	{
 		node = malloc(sizeof(t_lst *));
@@ -57,20 +55,4 @@ t_lst	*last_item(t_lst *head)
 	while (head->next)
 		head = head->next;
 	return (head);
-}
-
-int		find_min(t_lst *head, int split_num)
-{
-	int	min;
-
-	if (!head)
-		return 0;
-	min = head->content;
-	while (head)
-	{
-		if (head->content > min && head->split == split_num)
-			min = head->content;
-		head = head->next;
-	}
-	return (min);
 }

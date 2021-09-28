@@ -1,4 +1,4 @@
-NAME=pushswap
+NAME=push_swap
 GCC=gcc -Wall -Werror -Wextra
 SOURCES=$(wildcard ./*.c)
 S_OBJ=$(SOURCES:.c=.o)
