@@ -13,7 +13,7 @@ $(NAME):
 	$(GCC) -o push_swap $(S_OBJ) $(U_OBJ) -L. -lft
 
 clean:
-	rm -rf $(S_OBJ) $(U_OBJ)
+	rm -rf $(S_OBJ) $(U_OBJ) libft.a
 
 fclean: clean
 	rm -rf $(NAME) libft.a
