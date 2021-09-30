@@ -35,10 +35,7 @@ int	sorted(char **argv)
 				return 0;
 		}
 		else
-		{
-			ft_putstr_fd("Invalid input: non numeric arguement", 1);
-			exit(1);
-		}
+			exit(0);
 	}
 	return (1);
 }

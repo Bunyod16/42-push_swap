@@ -2,3 +2,6 @@
 *.out
 checker_linux
 *.o
+*.a
+push_swap
+
