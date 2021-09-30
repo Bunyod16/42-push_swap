@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:25:49 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:25:49 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_3(t_lst **h, char	*sa, char *rra)
@@ -6,14 +18,14 @@ void	sort_3(t_lst **h, char	*sa, char *rra)
 	{
 		swap_stack(h, sa);
 		if ((*h)->next->content > (*h)->next->next->content)
-			rrotate_stack(h, rra);			
+			rrotate_stack(h, rra);
 	}
 	if ((*h)->content > (*h)->next->content)
 		swap_stack(h, sa);
 	if ((*h)->next->content > (*h)->next->next->content)
 		rrotate_stack(h, rra);
 	if ((*h)->content > (*h)->next->content)
-		swap_stack(h, sa);		
+		swap_stack(h, sa);
 }
 
 void	sort_2(t_lst **h, char *str)
@@ -60,6 +72,6 @@ void	split_half(t_lst **headRef, t_lst **stack_b)
 
 	i = 0;
 	len = lst_len(*headRef);
-	while(len - ++i > (len / 2))
+	while (len - ++i > (len / 2))
 		push_stack(headRef, stack_b, "pb\n");
 }

@@ -1,4 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:25:05 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:25:05 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
+
+static int	find_min(t_lst **headRef, int min)
+{
+	t_lst	*head;
+
+	head = *headRef;
+	while (head)
+	{
+		if (head->split == -1)
+			min = head->content;
+		head = head->next;
+	}
+	return (min);
+}
 
 void	convert_to_places(t_lst **headRef)
 {
@@ -24,16 +50,11 @@ void	convert_to_places(t_lst **headRef)
 		}
 		min_ref->split = i;
 		head = *headRef;
-		while (head)
-		{
-			if (head->split == -1)
-				min = head->content;
-			head = head->next;
-		}
+		min = find_min(headRef, min);
 	}
 }
 
-int		find_max_bit(t_lst **headRef)
+int	find_max_bit(t_lst **headRef)
 {
 	int		i;
 	int		max;
@@ -46,7 +67,7 @@ int		find_max_bit(t_lst **headRef)
 		i = 0;
 		while (++i <= 31)
 		{
-			if ((head->split>>i & 1) == 1 && i > max)
+			if ((head->split >> i & 1) == 1 && i > max)
 				max = i;
 		}
 		head = head->next;
@@ -68,7 +89,7 @@ void	sort_bitwise(t_lst **headRef, t_lst **stack_b)
 		j = 0;
 		while (len - j++)
 		{
-			if (((*headRef)->split>>i & 1) == 1)
+			if (((*headRef)->split >> i & 1) == 1)
 				rotate_stack(headRef, "ra\n");
 			else
 				push_stack(headRef, stack_b, "pb\n");

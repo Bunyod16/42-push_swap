@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:24:20 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:24:20 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	push_stack(t_lst **src, t_lst **dest, char *str)
@@ -11,7 +23,7 @@ void	push_stack(t_lst **src, t_lst **dest, char *str)
 		temp = (*src)->next;
 		*dest = (*src);
 		(*dest)->next = NULL;
-		(*src) = temp;	
+		(*src) = temp;
 	}
 	else
 	{
@@ -23,7 +35,7 @@ void	push_stack(t_lst **src, t_lst **dest, char *str)
 	}
 }
 
-void	rotate_stack(t_lst	**headRef,  char *str)
+void	rotate_stack(t_lst **headRef, char *str)
 {
 	t_lst	*temp;
 	t_lst	*head;
@@ -31,18 +43,18 @@ void	rotate_stack(t_lst	**headRef,  char *str)
 
 	ft_putstr_fd(str, 1);
 	if (!*headRef || (*headRef)->next == NULL)
-		return;
+		return ;
 	head = *headRef;
 	temp = *headRef;
 	second_node = (*headRef)->next;
-	while(head->next)
+	while (head->next)
 		head = head->next;
 	head->next = temp;
 	temp->next = NULL;
 	*headRef = second_node;
 }
 
-void	rrotate_stack(t_lst	**headRef,  char *str)
+void	rrotate_stack(t_lst **headRef, char *str)
 {
 	t_lst	*temp;
 	t_lst	*head;
@@ -50,10 +62,10 @@ void	rrotate_stack(t_lst	**headRef,  char *str)
 
 	ft_putstr_fd(str, 1);
 	if (!*headRef || (*headRef)->next == NULL)
-		return;
+		return ;
 	head = *headRef;
 	temp = *headRef;
-	while(head->next)
+	while (head->next)
 	{
 		if (head->next->next == NULL)
 			second_node = head;
@@ -64,14 +76,14 @@ void	rrotate_stack(t_lst	**headRef,  char *str)
 	second_node->next = NULL;
 }
 
-void	swap_stack(t_lst **headRef,  char *str)
+void	swap_stack(t_lst **headRef, char *str)
 {
 	t_lst	*temp;
 	t_lst	*head;
 
 	ft_putstr_fd(str, 1);
 	if (!(*headRef) || !(*headRef)->next)
-		return;
+		return ;
 	head = *headRef;
 	temp = (*headRef)->next;
 	head->next = temp->next;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:24:45 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:24:45 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 t_lst	*ps_lstnew(int content)
@@ -15,7 +27,7 @@ t_lst	*ps_lstnew(int content)
 
 int	lst_len(t_lst *head)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (head)
@@ -23,7 +35,7 @@ int	lst_len(t_lst *head)
 		i++;
 		head = head->next;
 	}
-	return i;
+	return (i);
 }
 
 void	ps_lstadd_back(t_lst **lst, int value)

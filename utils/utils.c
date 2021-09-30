@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:25:12 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:25:12 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 int	ft_isnum(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (s[i] == '-')
@@ -32,7 +44,7 @@ int	sorted(char **argv)
 			if (ft_atoi(argv[i]) >= min)
 				min = ft_atoi(argv[i]);
 			else
-				return 0;
+				return (0);
 		}
 		else
 			exit(0);

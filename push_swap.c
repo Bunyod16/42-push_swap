@@ -1,16 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:25:35 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:25:35 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	error_check(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
-	if (argc < 2 || sorted(argv))
-		exit (0);
 	while (argv[i])
 	{
-		if(!ft_isnum(argv[i]))
+		if (!ft_isnum(argv[i]))
 		{
 			ft_putstr_fd("Error\n", 1);
 			exit (0);
@@ -18,8 +28,8 @@ void	error_check(int argc, char **argv)
 		j = 0;
 		while (argv[++j])
 		{
-			if ((ft_atoi(argv[j]) == ft_atoi(argv[i]) && j != i) ||
-			(ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN))
+			if ((ft_atoi(argv[j]) == ft_atoi(argv[i]) && j != i)
+				|| (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN))
 			{
 				ft_putstr_fd("Error\n", 1);
 				exit (0);
@@ -27,6 +37,8 @@ void	error_check(int argc, char **argv)
 		}
 		i++;
 	}
+	if (argc < 2 || sorted(argv))
+		exit (0);
 }
 
 void	small_sort(t_lst **headRef)
@@ -36,6 +48,11 @@ void	small_sort(t_lst **headRef)
 	stack_b = NULL;
 	if (*headRef == NULL)
 		return ;
+	if (lst_len(*headRef) == 3)
+	{
+		sort_3(headRef, "sa\n", "rra\n");
+		return ;
+	}
 	convert_to_places(headRef);
 	split_half(headRef, &stack_b);
 	sort_halves(headRef, &stack_b);
@@ -58,8 +75,8 @@ int	main(int argc, char **argv)
 	int		i;
 	t_lst	*stack_a;
 	t_lst	*temp;
-	i = 0;
 
+	i = 0;
 	error_check(argc, argv);
 	while (++i < argc)
 	{
@@ -72,7 +89,7 @@ int	main(int argc, char **argv)
 		radix_sort(&stack_a);
 	else
 		small_sort(&stack_a);
-	while(stack_a)
+	while (stack_a)
 	{
 		temp = stack_a->next;
 		free(stack_a);

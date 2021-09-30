@@ -1,8 +1,21 @@
-# ifndef PUSH_SWAP_h
-# define PUSH_SWAP_h
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bshamsid <bshamsid@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 02:25:43 by bshamsid          #+#    #+#             */
+/*   Updated: 2021/10/01 02:25:43 by bshamsid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "libft.h"
-#include <limits.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include "libft.h"
+# include <limits.h>
+
 typedef struct b_list
 {
 	int				content;
@@ -31,4 +44,4 @@ int		lst_len(t_lst *head);
 int		ft_isnum(char *s);
 t_lst	*last_item(t_lst *head);
 t_lst	*ps_lstnew(int content);
-# endif
+#endif
