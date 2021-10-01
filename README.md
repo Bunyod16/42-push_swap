@@ -2,9 +2,9 @@
 
 ## This project is used for sorting a random stack of numbers in ascending order using two stacks and a limited amount of commands.
 
-# Commands: 
-# pa : push top number on stack b to stack a
-# pb : push top number on stack a to stack b
+## Commands: 
+### pa : push top number on stack b to stack a
+### pb : push top number on stack a to stack b
 # ra : up shift all numbers on stack a, top number goes to the bottom
 # rra : down shift all numbers on stack b, bottom number goes to the top
 # rb : same as ra but for stack b
