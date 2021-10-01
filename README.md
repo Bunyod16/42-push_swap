@@ -15,6 +15,7 @@
 - sb : same as sb but on stack b
 
 ## Instructions to run:
-#### 
-Clone repo `git clone`
+#### Clone repo       `git clone https://github.com/Bunyod16/push_swap.git`
+#### Build executable `cd push_swap && make`
+#### Run              `./push_swap 1 0 2`
 
